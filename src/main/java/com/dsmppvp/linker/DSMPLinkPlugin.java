@@ -35,6 +35,7 @@ public final class DSMPLinkPlugin extends JavaPlugin {
     }
 
     public void showLinkDialog(Player player) {
+        getLogger().info("Opening link dialog for " + player.getName());
         try {
             Dialog dialog = Dialog.create(builder -> builder
                 .empty()
