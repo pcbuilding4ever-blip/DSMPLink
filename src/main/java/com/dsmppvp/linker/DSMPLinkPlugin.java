@@ -7,7 +7,6 @@ import io.papermc.paper.registry.data.dialog.input.DialogInput;
 import io.papermc.paper.registry.data.dialog.action.DialogAction;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickCallback;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -61,31 +60,9 @@ public final class DSMPLinkPlugin extends JavaPlugin {
                                 Component.text("Verify your Discord code"),
                                 150,
                                 DialogAction.customClick(
-                                        (view, audience) -> {
-                                            if (!(audience instanceof Player target)) {
-                                                return;
-                                            }
-
-                                            String code = view.getText("code");
-                                            if (code == null) {
-                                                target.sendMessage(Component.text("Please enter your 6-digit Discord code."));
-                                                return;
-                                            }
-
-                                            code = code.trim();
-                                            if (!code.matches("\\d{6}")) {
-                                                target.sendMessage(Component.text("Your code must be exactly 6 digits."));
-                                                Bukkit.getScheduler().runTask(this, () -> showLinkDialog(target));
-                                                return;
-                                            }
-
-                                            verifyCode(target, code);
-                                        },
-                                        ClickCallback.Options.builder()
-                                                .uses(1)
-                                                .lifetime(ClickCallback.DEFAULT_LIFETIME)
-                                                .build()
-                                )
+                                        net.kyori.adventure.key.Key.key("dsmppvp:link"),
+                                        null
+                                ))
                         ),
                         ActionButton.create(
                                 Component.text("Cancel"),
@@ -99,7 +76,7 @@ public final class DSMPLinkPlugin extends JavaPlugin {
         player.showDialog(dialog);
     }
 
-    private void verifyCode(Player player, String code) {
+    public void verifyCode(Player player, String code) {
         player.sendMessage(Component.text("Linking your account..."));
 
         String apiUrl = getConfig().getString("api-url", "").trim();
