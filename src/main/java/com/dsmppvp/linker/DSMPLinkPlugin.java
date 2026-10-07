@@ -18,7 +18,7 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.List;
 
-public final class DSMPLinkPlugin extends JavaPlugin {
+public final class DSMPLinkPlugin {
 
     private HttpClient httpClient;
 
@@ -51,7 +51,7 @@ public final class DSMPLinkPlugin extends JavaPlugin {
                                         "",
                                         6,
                                         null
-                                ).build()
+                                )
                         ))
                         .build())
                 .type(DialogType.confirmation(
