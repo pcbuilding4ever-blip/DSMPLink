@@ -7,6 +7,7 @@ import io.papermc.paper.registry.data.dialog.input.DialogInput;
 import io.papermc.paper.registry.data.dialog.action.DialogAction;
 import io.papermc.paper.registry.data.dialog.type.DialogType;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickCallback;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -80,7 +81,10 @@ public final class DSMPLinkPlugin extends JavaPlugin {
 
                                             verifyCode(target, code);
                                         },
-                                        null
+                                        ClickCallback.Options.builder()
+                                                .uses(1)
+                                                .lifetime(ClickCallback.DEFAULT_LIFETIME)
+                                                .build()
                                 )
                         ),
                         ActionButton.create(
