@@ -17,6 +17,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.List;
+import java.util.logging.Level;
 
 public final class DSMPLinkPlugin extends JavaPlugin {
 
@@ -34,7 +35,8 @@ public final class DSMPLinkPlugin extends JavaPlugin {
     }
 
     public void showLinkDialog(Player player) {
-        Dialog dialog = Dialog.create(builder -> builder
+        try {
+            Dialog dialog = Dialog.create(builder -> builder
                 .empty()
                 .base(DialogBase.builder(Component.text("Link your Discord account"))
                         .canCloseWithEscape(false)
@@ -72,7 +74,11 @@ public final class DSMPLinkPlugin extends JavaPlugin {
                 ))
         );
 
-        player.showDialog(dialog);
+            player.showDialog(dialog);
+        } catch (Throwable error) {
+            getLogger().log(Level.SEVERE, "Failed to open DSMPLink dialog for " + player.getName(), error);
+            player.sendMessage(Component.text("DSMPLink could not open the linking screen. Check the server console."));
+        }
     }
 
     public void verifyCode(Player player, String code) {
