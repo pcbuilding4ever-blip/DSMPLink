@@ -62,8 +62,7 @@ public final class DSMPLinkPlugin extends JavaPlugin {
                                 DialogAction.customClick(
                                         net.kyori.adventure.key.Key.key("dsmppvp:link"),
                                         null
-                                ))
-                        ),
+                                )),
                         ActionButton.create(
                                 Component.text("Cancel"),
                                 Component.text("Close the linking screen"),
