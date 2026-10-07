@@ -1,0 +1,6 @@
+# Discord bot verification API.
+api-url: "https://CHANGE-ME/verify"
+api-secret: "CHANGE-ME"
+
+reopen-delay-seconds: 2
+require-link-on-join: true
