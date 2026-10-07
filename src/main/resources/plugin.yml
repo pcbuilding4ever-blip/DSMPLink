@@ -1,0 +1,6 @@
+name: DSMPLink
+version: ${version}
+main: com.dsmppvp.linker.DSMPLinkPlugin
+api-version: '1.21'
+author: DSMP PvP
+description: Automatically links Minecraft accounts to Discord using a six-digit code.
