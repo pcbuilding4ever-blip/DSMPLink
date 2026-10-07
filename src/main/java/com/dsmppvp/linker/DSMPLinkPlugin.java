@@ -18,7 +18,7 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.List;
 
-public final class DSMPLinkPlugin {
+public final class DSMPLinkPlugin extends JavaPlugin {
 
     private HttpClient httpClient;
 
