@@ -42,7 +42,7 @@ public final class JoinListener implements Listener {
             return;
         }
         code = code.trim();
-        if (!code.matches("\\\\d{6}")) {
+        if (!code.matches("\\d{6}")) {
             player.sendMessage("Your code must be exactly 6 digits.");
             plugin.getServer().getScheduler().runTask(plugin, () -> plugin.showLinkDialog(player));
             return;
